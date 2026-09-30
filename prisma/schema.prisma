@@ -1,0 +1,268 @@
+// Denhouse Group — Prisma Schema (Phase 2)
+// Normalized relational schema for Real Estate + PG businesses.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ---------------------------------------------------------------------------
+// USERS / AUTH
+// ---------------------------------------------------------------------------
+
+enum UserRole {
+  ADMIN
+  AGENT // reserved for future multi-user support (Phase 50)
+}
+
+model User {
+  id           String   @id @default(cuid())
+  name         String?
+  email        String   @unique
+  passwordHash String
+  role         UserRole @default(ADMIN)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([email])
+}
+
+// ---------------------------------------------------------------------------
+// REAL ESTATE
+// ---------------------------------------------------------------------------
+
+enum PropertyCategory {
+  RESIDENTIAL
+  COMMERCIAL
+  LAND
+}
+
+enum PropertyType {
+  APARTMENT
+  FLAT
+  VILLA
+  INDEPENDENT_HOUSE
+  BUILDER_FLOOR
+  STUDIO
+  OFFICE
+  SHOP
+  SHOWROOM
+  WAREHOUSE
+  COMMERCIAL_BUILDING
+  RESIDENTIAL_PLOT
+  COMMERCIAL_PLOT
+  AGRICULTURAL_LAND
+}
+
+enum ListingType {
+  SALE
+  RENT
+}
+
+enum PropertyStatus {
+  AVAILABLE
+  SOLD
+  RENTED
+  UNDER_OFFER
+  COMING_SOON
+}
+
+enum Furnishing {
+  UNFURNISHED
+  SEMI_FURNISHED
+  FULLY_FURNISHED
+}
+
+enum AreaUnit {
+  SQFT
+  SQYD
+  ACRE
+}
+
+model Property {
+  id          String @id @default(cuid())
+  title       String
+  slug        String @unique
+  description String @db.Text
+
+  price      Decimal @db.Decimal(14, 2)
+  priceLabel String?
+
+  category     PropertyCategory
+  propertyType PropertyType
+  listingType  ListingType
+  status       PropertyStatus @default(AVAILABLE)
+
+  location  String
+  city      String
+  state     String
+  pincode   String?
+  address   String?
+  latitude  Float?
+  longitude Float?
+
+  bedrooms   Int?
+  bathrooms  Int?
+  balconies  Int?
+  area       Float?
+  areaUnit   AreaUnit?
+  yearBuilt  Int?
+  furnishing Furnishing?
+  parking    Boolean  @default(false)
+  amenities  String[] @default([])
+
+  featured Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  images    PropertyImage[]
+  inquiries Inquiry[]
+
+  @@index([city])
+  @@index([category])
+  @@index([propertyType])
+  @@index([listingType])
+  @@index([status])
+  @@index([featured])
+  @@index([price])
+}
+
+model PropertyImage {
+  id         String   @id @default(cuid())
+  propertyId String
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  url       String
+  altText   String?
+  sortOrder Int     @default(0)
+  isMain    Boolean @default(false)
+
+  createdAt DateTime @default(now())
+
+  @@index([propertyId])
+}
+
+// ---------------------------------------------------------------------------
+// PG / PAYING GUEST
+// ---------------------------------------------------------------------------
+
+enum PGGender {
+  MALE
+  FEMALE
+  UNISEX
+}
+
+enum PGRoomType {
+  SINGLE
+  DOUBLE_SHARING
+  TRIPLE_SHARING
+  OTHER
+}
+
+enum Availability {
+  AVAILABLE
+  FULL
+  COMING_SOON
+}
+
+model PGRoom {
+  id          String @id @default(cuid())
+  name        String
+  slug        String @unique
+  description String @db.Text
+
+  location String
+  city     String
+
+  monthlyRent     Decimal  @db.Decimal(10, 2)
+  securityDeposit Decimal? @db.Decimal(10, 2)
+
+  roomType PGRoomType
+  gender   PGGender
+
+  ac           Boolean @default(false)
+  wifi         Boolean @default(false)
+  food         Boolean @default(false)
+  laundry      Boolean @default(false)
+  parking      Boolean @default(false)
+  housekeeping Boolean @default(false)
+
+  availability Availability @default(AVAILABLE)
+  featured     Boolean      @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  images    PGImage[]
+  inquiries Inquiry[]
+
+  @@index([city])
+  @@index([gender])
+  @@index([roomType])
+  @@index([availability])
+  @@index([featured])
+}
+
+model PGImage {
+  id       String @id @default(cuid())
+  pgRoomId String
+  pgRoom   PGRoom @relation(fields: [pgRoomId], references: [id], onDelete: Cascade)
+
+  url       String
+  altText   String?
+  sortOrder Int     @default(0)
+  isMain    Boolean @default(false)
+
+  createdAt DateTime @default(now())
+
+  @@index([pgRoomId])
+}
+
+// ---------------------------------------------------------------------------
+// INQUIRIES (contact form is delivered via Formspree; this table lets the
+// architecture optionally persist inquiries too — Phase 21/28)
+// ---------------------------------------------------------------------------
+
+enum InquiryService {
+  BUY_PROPERTY
+  SELL_PROPERTY
+  RENT_PROPERTY
+  PG_INQUIRY
+  GENERAL_INQUIRY
+}
+
+enum InquiryStatus {
+  NEW
+  CONTACTED
+  CLOSED
+}
+
+model Inquiry {
+  id      String  @id @default(cuid())
+  name    String
+  email   String
+  phone   String?
+  subject String?
+  service InquiryService
+  message String @db.Text
+
+  propertyId String?
+  property   Property? @relation(fields: [propertyId], references: [id], onDelete: SetNull)
+
+  pgRoomId String?
+  pgRoom   PGRoom? @relation(fields: [pgRoomId], references: [id], onDelete: SetNull)
+
+  status InquiryStatus @default(NEW)
+
+  createdAt DateTime @default(now())
+
+  @@index([status])
+  @@index([service])
+  @@index([createdAt])
+}
