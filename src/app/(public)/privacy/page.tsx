@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "How Denhouse Group handles information submitted through this website.",
+  description: "How Den House Group handles information submitted through this website.",
   alternates: { canonical: "/privacy" },
 };
 
@@ -11,7 +11,7 @@ export default function PrivacyPage() {
     <div className="container-page max-w-3xl py-12">
       <h1 className="font-heading text-3xl font-semibold text-ink">Privacy Policy</h1>
       <p className="mt-4 rounded-md border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
-        Template text — have this reviewed by a qualified professional and adapt it to Denhouse Group&apos;s actual practices before launch.
+        Template text — have this reviewed by a qualified professional and adapt it to Den House Group&apos;s actual practices before launch.
       </p>
       <div className="prose mt-8 max-w-none text-ink/80">
         <h2>Information we collect</h2>

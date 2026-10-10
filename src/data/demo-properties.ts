@@ -1,5 +1,5 @@
 /**
- * SAMPLE / DEMO DATA — NOT REAL DENHOUSE GROUP LISTINGS.
+ * SAMPLE / DEMO DATA — NOT REAL DEN HOUSE GROUP LISTINGS.
  *
  * This file exists purely so the site has realistic-looking content during
  * development and design review. It is consumed by `prisma/seed.ts` to
@@ -7,7 +7,7 @@
  * entered through the admin panel.
  *
  * Images are placeholder photography from Lorem Picsum (picsum.photos), a
- * public placeholder-image service — not real Denhouse Group photography.
+ * public placeholder-image service — not real Den House Group photography.
  */
 
 export interface DemoPropertyImage {
@@ -61,7 +61,7 @@ export const demoProperties: DemoProperty[] = [
   {
     title: "3 BHK Independent House",
     description:
-      "A spacious, sample 3 BHK independent house with a private lawn and covered parking. Demo listing used to illustrate the property detail layout — replace with real Denhouse Group inventory.",
+      "A spacious, sample 3 BHK independent house with a private lawn and covered parking. Demo listing used to illustrate the property detail layout — replace with real Den House Group inventory.",
     price: 8_500_000,
     category: "RESIDENTIAL",
     propertyType: "INDEPENDENT_HOUSE",
@@ -117,7 +117,7 @@ export const demoProperties: DemoProperty[] = [
   {
     title: "Premium Villa with Garden",
     description:
-      "A sample premium villa with a landscaped garden and a modular kitchen, intended to showcase the top end of the catalog. Not an actual Denhouse Group listing.",
+      "A sample premium villa with a landscaped garden and a modular kitchen, intended to showcase the top end of the catalog. Not an actual Den House Group listing.",
     price: 21_000_000,
     category: "RESIDENTIAL",
     propertyType: "VILLA",

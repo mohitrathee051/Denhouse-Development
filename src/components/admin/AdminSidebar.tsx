@@ -47,7 +47,7 @@ export function AdminSidebar() {
     <>
       <aside className="hidden w-60 shrink-0 bg-navy md:block">
         <div className="px-5 py-5 font-heading text-lg font-bold text-white">
-          Denhouse <span className="text-gold">Admin</span>
+          Den House <span className="text-gold">Admin</span>
         </div>
         <NavList />
       </aside>
@@ -73,7 +73,7 @@ export function AdminSidebar() {
             >
               <X className="h-5 w-5" aria-hidden />
             </button>
-            <div className="px-5 py-5 font-heading text-lg font-bold text-white">Denhouse Admin</div>
+            <div className="px-5 py-5 font-heading text-lg font-bold text-white">Den House Admin</div>
             <NavList onNavigate={() => setOpen(false)} />
           </div>
         </div>

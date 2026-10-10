@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { MapPin, Phone, Mail } from "lucide-react";
+import { siteConfig } from "@/lib/site-config";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -9,12 +10,11 @@ export function Footer() {
       <div className="container-page grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <span className="font-heading text-xl font-bold">
-            Denhouse<span className="text-gold"> Group</span>
+            Den House<span className="text-gold"> Group</span>
           </span>
           <p className="mt-3 max-w-xs text-sm text-white/70">
-            A premium real estate company also offering quality PG
-            accommodation. Content on this site marked &ldquo;sample&rdquo; is
-            placeholder copy pending real company information.
+            {siteConfig.tagline}. Real estate and PG solutions built around
+            clarity, care and long-term relationships.
           </p>
         </div>
 
@@ -46,20 +46,20 @@ export function Footer() {
 
         <div>
           <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-gold">
-            Contact <span className="font-normal normal-case text-white/50">(sample)</span>
+            Contact
           </h3>
           <ul className="space-y-3 text-sm text-white/80">
             <li className="flex items-start gap-2">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold" aria-hidden />
-              <span>Address placeholder — Karnal, Haryana, India</span>
+              <span>{siteConfig.address}</span>
             </li>
             <li className="flex items-center gap-2">
               <Phone className="h-4 w-4 shrink-0 text-gold" aria-hidden />
-              <span>+91 00000 00000 (placeholder)</span>
+              <span>{siteConfig.phone}</span>
             </li>
             <li className="flex items-center gap-2">
               <Mail className="h-4 w-4 shrink-0 text-gold" aria-hidden />
-              <span>info@denhousegroup.example (placeholder)</span>
+              <span>{siteConfig.email}</span>
             </li>
           </ul>
         </div>
@@ -67,8 +67,8 @@ export function Footer() {
 
       <div className="border-t border-white/10">
         <div className="container-page flex flex-col items-center justify-between gap-2 py-5 text-xs text-white/60 sm:flex-row">
-          <p>© {year} Denhouse Group. All rights reserved.</p>
-          <p>Business hours placeholder: Mon–Sat, 10:00 AM – 7:00 PM</p>
+          <p>© {year} {siteConfig.legalName}. All rights reserved.</p>
+          <p>Hindi · English</p>
         </div>
       </div>
     </footer>

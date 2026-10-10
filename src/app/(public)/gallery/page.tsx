@@ -4,7 +4,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export const metadata: Metadata = {
   title: "Gallery",
-  description: "Photos from Denhouse Group real estate, PG accommodation and more.",
+  description: "Photos from Den House Group real estate, PG accommodation and more.",
   alternates: { canonical: "/gallery" },
 };
 
@@ -27,7 +27,7 @@ export default function GalleryPage() {
     <div className="container-page py-12">
       <SectionHeading eyebrow="Gallery" title="Our Gallery" />
       <p className="mb-8 mt-4 rounded-md border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
-        Sample placeholder photography — replace with real Denhouse Group images.
+        Sample placeholder photography — replace with real Den House Group images.
       </p>
       <GalleryGrid items={ITEMS} categories={CATEGORIES} />
     </div>

@@ -9,7 +9,7 @@ import { buildQuery, parsePGFilters } from "@/lib/utils/search-params";
 export const metadata: Metadata = {
   title: "PG Accommodation",
   description:
-    "Find paying guest (PG) rooms with Denhouse Group. Filter by location, rent, gender, room type and amenities.",
+    "Find paying guest (PG) rooms with Den House Group. Filter by location, rent, gender, room type and amenities.",
   alternates: { canonical: "/pg" },
 };
 

@@ -8,7 +8,7 @@ import { siteConfig, telHref, whatsappHref } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Contact Us",
-  description: "Get in touch with Denhouse Group about buying, selling, renting or PG accommodation.",
+  description: "Get in touch with Den House Group about buying, selling, renting or PG accommodation.",
   alternates: { canonical: "/contact" },
 };
 
@@ -28,7 +28,7 @@ export default async function ContactPage({ searchParams }: { searchParams: Sear
   return (
     <div className="container-page py-12">
       <header className="mb-10 max-w-2xl">
-        <h1 className="font-heading text-3xl font-semibold text-ink sm:text-4xl">Contact Denhouse</h1>
+        <h1 className="font-heading text-3xl font-semibold text-ink sm:text-4xl">Contact Den House</h1>
         <p className="mt-2 text-muted">
           Tell us what you&apos;re looking for and we&apos;ll get back to you.
         </p>
@@ -51,11 +51,11 @@ export default async function ContactPage({ searchParams }: { searchParams: Sear
             <CardContent className="space-y-4 text-sm">
               <p className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-gold-600" aria-hidden />
-                <span className="text-muted">Address placeholder — to be added.</span>
+                <span className="text-muted">{siteConfig.address}</span>
               </p>
               <p className="flex items-start gap-3">
                 <Clock className="mt-0.5 h-5 w-5 shrink-0 text-gold-600" aria-hidden />
-                <span className="text-muted">Business hours placeholder — to be added.</span>
+                <span className="text-muted">Serving Gurugram and surrounding areas.</span>
               </p>
               {siteConfig.phone && (
                 <Button href={telHref(siteConfig.phone)} variant="outline" className="w-full">
@@ -65,6 +65,11 @@ export default async function ContactPage({ searchParams }: { searchParams: Sear
               {siteConfig.whatsapp && (
                 <Button href={whatsappHref(siteConfig.whatsapp)} target="_blank" rel="noopener noreferrer" variant="outline" className="w-full">
                   <MessageCircle className="h-4 w-4" aria-hidden /> WhatsApp
+                </Button>
+              )}
+              {siteConfig.email && (
+                <Button href={`mailto:${siteConfig.email}`} variant="outline" className="w-full">
+                  <span aria-hidden>✉</span> Email Us
                 </Button>
               )}
               {!siteConfig.phone && !siteConfig.whatsapp && (

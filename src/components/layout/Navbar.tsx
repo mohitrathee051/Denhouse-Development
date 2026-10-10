@@ -40,7 +40,7 @@ export function Navbar() {
       <div className="container-page flex h-16 items-center justify-between sm:h-20">
         <Link href="/" className="flex items-center gap-2">
           <span className="font-heading text-xl font-bold tracking-tight text-navy sm:text-2xl">
-            Denhouse<span className="text-gold-600"> Group</span>
+            Den House<span className="text-gold-600"> Group</span>
           </span>
         </Link>
 

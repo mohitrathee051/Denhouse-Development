@@ -67,7 +67,7 @@ export function ContactForm({ defaultService = "GENERAL_INQUIRY", defaultSubject
       <div role="status" className="rounded-card border border-emerald-200 bg-emerald-50 p-8 text-center">
         <CheckCircle2 className="mx-auto h-12 w-12 text-emerald-600" aria-hidden />
         <h2 className="mt-4 font-heading text-2xl font-semibold text-ink">Thank you — message sent.</h2>
-        <p className="mt-2 text-muted">The Denhouse Group team will get back to you shortly.</p>
+          <p className="mt-2 text-muted">The Den House Group team will get back to you shortly.</p>
         <Button variant="outline" className="mt-6" onClick={() => setStatus("idle")}>
           Send another message
         </Button>
@@ -93,7 +93,7 @@ export function ContactForm({ defaultService = "GENERAL_INQUIRY", defaultSubject
       <Input label="Subject (optional)" error={errors.subject?.message} {...register("subject")} />
       <Textarea label="Message" error={errors.message?.message} {...register("message")} />
       <Button type="submit" size="lg" disabled={isSubmitting}>
-        {isSubmitting ? "Sending…" : "Contact Denhouse"}
+        {isSubmitting ? "Sending…" : "Contact Den House"}
       </Button>
     </form>
   );

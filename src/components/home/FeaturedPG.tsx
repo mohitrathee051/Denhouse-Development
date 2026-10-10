@@ -11,7 +11,7 @@ export async function FeaturedPG() {
       <div className="container-page">
         <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
           <SectionHeading
-            eyebrow="Also from Denhouse"
+            eyebrow="Also from Den House"
             title="PG Accommodation"
             description="Comfortable paying guest rooms for students and professionals."
           />

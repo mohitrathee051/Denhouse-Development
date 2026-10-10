@@ -1,5 +1,5 @@
 /**
- * SAMPLE / DEMO DATA — NOT REAL DENHOUSE GROUP PG LISTINGS.
+ * SAMPLE / DEMO DATA — NOT REAL DEN HOUSE GROUP PG LISTINGS.
  * See the note in `demo-properties.ts`; the same rules apply here.
  */
 

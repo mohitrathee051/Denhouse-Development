@@ -15,7 +15,7 @@ export async function FeaturedProperties() {
         </div>
         <PropertyGrid properties={properties} />
         <p className="mt-6 text-xs text-muted">
-          Listings shown during development are sample data, not real Denhouse Group inventory.
+          Listings shown during development are sample data, not real Den House Group inventory.
         </p>
       </div>
     </section>

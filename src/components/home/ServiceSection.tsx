@@ -25,7 +25,7 @@ export function ServiceSection() {
         <SectionHeading
           eyebrow="What we do"
           title="Real Estate Services"
-          description="Whether you're buying, selling, renting or investing, Denhouse Group is here to help."
+          description="Whether you're buying, selling, renting or investing, Den House Group is here to help."
         />
         <div id="services-heading" className="sr-only">Real estate services</div>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

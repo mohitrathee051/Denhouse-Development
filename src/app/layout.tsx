@@ -21,23 +21,23 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Denhouse Group | Real Estate & PG Accommodation",
-    template: "%s | Denhouse Group",
+    default: "Den House Group | Real Estate & PG Accommodation",
+    template: "%s | Den House Group",
   },
   description:
-    "Denhouse Group helps you buy, sell, and rent residential and commercial properties, and offers quality PG (paying guest) accommodation.",
+    "Den House Group helps you buy, sell, and rent residential and commercial properties, and offers quality PG (paying guest) accommodation.",
   openGraph: {
     type: "website",
-    siteName: "Denhouse Group",
-    title: "Denhouse Group | Real Estate & PG Accommodation",
+    siteName: "Den House Group",
+    title: "Den House Group | Real Estate & PG Accommodation",
     description:
-      "Denhouse Group helps you buy, sell, and rent residential and commercial properties, and offers quality PG (paying guest) accommodation.",
+      "Den House Group helps you buy, sell, and rent residential and commercial properties, and offers quality PG (paying guest) accommodation.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Denhouse Group | Real Estate & PG Accommodation",
+    title: "Den House Group | Real Estate & PG Accommodation",
     description:
-      "Denhouse Group helps you buy, sell, and rent residential and commercial properties, and offers quality PG (paying guest) accommodation.",
+      "Den House Group helps you buy, sell, and rent residential and commercial properties, and offers quality PG (paying guest) accommodation.",
   },
 };
 

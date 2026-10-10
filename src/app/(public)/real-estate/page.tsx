@@ -10,7 +10,7 @@ import { buildQuery, parsePropertyFilters } from "@/lib/utils/search-params";
 export const metadata: Metadata = {
   title: "Properties for Sale & Rent",
   description:
-    "Browse residential, commercial and plot listings from Denhouse Group. Filter by location, budget, bedrooms and more.",
+    "Browse residential, commercial and plot listings from Den House Group. Filter by location, budget, bedrooms and more.",
   alternates: { canonical: "/real-estate" },
 };
 

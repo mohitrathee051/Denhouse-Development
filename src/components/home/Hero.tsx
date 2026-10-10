@@ -43,7 +43,7 @@ export function Hero() {
         className="-z-10 object-cover opacity-30"
       />
       <div className="container-page py-20 sm:py-28">
-        <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-gold">Denhouse Group Real Estate</p>
+        <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-gold">Den House Group · Real Estate</p>
         <h1 className="max-w-3xl font-heading text-4xl font-semibold leading-tight text-white sm:text-6xl">
           Find a Place to Call Home.
         </h1>

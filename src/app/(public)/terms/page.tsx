@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: "Terms for using the Denhouse Group website.",
+  description: "Terms for using the Den House Group website.",
   alternates: { canonical: "/terms" },
 };
 
@@ -17,7 +17,7 @@ export default function TermsPage() {
         <h2>Use of this website</h2>
         <p>Information on this site is provided for general guidance and may change without notice.</p>
         <h2>Listings</h2>
-        <p>Property and PG details, prices and availability are subject to change and confirmation with Denhouse Group.</p>
+        <p>Property and PG details, prices and availability are subject to change and confirmation with Den House Group.</p>
         <h2>Liability</h2>
         <p>Please verify all details directly with us before making decisions.</p>
       </div>

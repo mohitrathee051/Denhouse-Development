@@ -24,7 +24,7 @@ export function PropertyInquiryCTA({ title, slug, listingType }: PropertyInquiry
         <CardContent className="space-y-4">
           <h2 className="font-heading text-lg font-semibold text-ink">Interested in this property?</h2>
           <p className="text-sm text-muted">
-            Send us an enquiry and the Denhouse team will get back to you about “{title}”.
+            Send us an enquiry and the Den House team will get back to you about “{title}”.
           </p>
           <Button href={enquiryHref} className="w-full" size="lg">
             Enquire About This Property
