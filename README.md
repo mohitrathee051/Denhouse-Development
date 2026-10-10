@@ -1,6 +1,6 @@
-# Denhouse Group — Website & Admin Platform
+# Den House Group — Website & Admin Platform
 
-Full-stack Next.js 15 application for **Denhouse Group**: a real-estate-first company website
+Full-stack Next.js 15 application for **Den House Group**: a real-estate-first company website
 (buy / sell / rent) with a secondary PG (paying guest) service, plus a password-protected admin
 panel so the owner can manage listings without touching code.
 
@@ -9,9 +9,9 @@ panel so the owner can manage listings without touching code.
 
 ## Tech stack
 
-Next.js 15.1.0 (App Router, Server Components, Server Actions) · TypeScript (strict) · Tailwind CSS ·
+Next.js 15.1.11 (App Router, Server Components, Server Actions) · TypeScript (strict) · Tailwind CSS ·
 Prisma + PostgreSQL (Supabase) · Auth.js v5 (Credentials) · Supabase Storage · React Hook Form + Zod ·
-Framer Motion · lucide-react · Formspree.
+Framer Motion · lucide-react · Resend.
 
 ## Quick start
 
@@ -29,7 +29,8 @@ Other commands: `npm run lint` · `npm run type-check` · `npm run build` · `np
 ## Environment variables
 
 See `.env.example` (annotated). Required: `DATABASE_URL`, `DIRECT_URL`, `AUTH_SECRET`, `AUTH_URL`,
-`SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `NEXT_PUBLIC_FORMSPREE_ENDPOINT`, `NEXT_PUBLIC_SITE_URL`.
+`SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `RESEND_API_KEY`, `RESEND_FROM_EMAIL`,
+`CONTACT_TO_EMAIL`, `NEXT_PUBLIC_SITE_URL`.
 Optional (buttons hide when empty): `NEXT_PUBLIC_CONTACT_PHONE`, `NEXT_PUBLIC_WHATSAPP_NUMBER`,
 `NEXT_PUBLIC_CONTACT_EMAIL`. Generate a secret with `npx auth secret`.
 
@@ -69,8 +70,8 @@ src/
   server. Passwords are bcrypt-hashed; sessions are signed JWT cookies.
 - **Images**: uploaded through a Server Action (type + 5 MB validation) to Supabase Storage using
   the service-role key; only the public URL is stored in Postgres (`PropertyImage` / `PGImage`).
-- **Contact form**: React Hook Form + Zod, posted straight to Formspree. Nothing is duplicated in the
-  database; `/admin/inquiries` lists any DB-stored inquiries for future lead features.
+- **Contact form**: React Hook Form + Zod posts to the server-only `/api/contact` route, which sends
+  email through Resend. The Resend API key is never exposed to the browser.
 
 ## Setup guides
 
@@ -83,8 +84,10 @@ service-role key into `SUPABASE_URL` / `SUPABASE_SERVICE_ROLE_KEY`.
 `SEED_ADMIN_PASSWORD` (defaults exist for local dev only). For production set your own values
 before seeding and change the password immediately. Log in at `/admin/login`.
 
-**Formspree** — Create a form at formspree.io, paste its endpoint into
-`NEXT_PUBLIC_FORMSPREE_ENDPOINT`.
+**Resend** — Create a Resend account and API key. Verify the sending domain or email address, then
+configure `RESEND_API_KEY`, `RESEND_FROM_EMAIL` (the verified sender), and `CONTACT_TO_EMAIL` (the
+inbox that should receive contact submissions). These are server-side variables; never use a
+`NEXT_PUBLIC_` prefix for them.
 
 **Vercel** — Import the repo, add every variable from `.env.example` (set `AUTH_URL` and
 `NEXT_PUBLIC_SITE_URL` to your production URL), deploy. Run migrations against production with
@@ -102,10 +105,10 @@ have Privacy/Terms reviewed by a professional.
 | `prisma generate` 403 | Network blocks binaries.prisma.sh |
 | Redirect loop on /admin | `AUTH_SECRET` / `AUTH_URL` missing or wrong |
 | Image upload fails | Buckets missing/not public, or service-role key wrong |
-| Contact form says "not configured" | `NEXT_PUBLIC_FORMSPREE_ENDPOINT` unset (rebuild after setting) |
+| Contact form cannot send | Check `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, and `CONTACT_TO_EMAIL`; redeploy after changing Vercel variables |
 
 ## Known limitations (deliberate scope cuts)
 
 - Image **reordering** and alt-text editing are not implemented (upload, remove, set-main are).
-- The public inquiry form is not persisted to the database (Formspree is the single source).
+- The public inquiry form is not persisted to the database; Resend delivers it to `CONTACT_TO_EMAIL`.
 - No automated tests yet.

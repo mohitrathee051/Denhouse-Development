@@ -17,7 +17,7 @@ export default function PrivacyPage() {
         <h2>Information we collect</h2>
         <p>When you use our contact form we collect the details you submit: name, email, phone number and your message.</p>
         <h2>How it is delivered</h2>
-        <p>Contact form submissions are sent to us through Formspree, a third-party form service.</p>
+        <p>Contact form submissions are sent to our configured business inbox using Resend, a transactional email service.</p>
         <h2>How we use it</h2>
         <p>We use your details only to respond to your enquiry.</p>
         <h2>Contact</h2>

@@ -12,7 +12,7 @@ export default async function AdminInquiriesPage() {
     <div className="space-y-6">
       <h1 className="font-heading text-2xl font-semibold text-ink">Inquiries</h1>
       <p className="max-w-2xl text-sm text-muted">
-        Website contact form messages are delivered to your email through Formspree. This screen lists
+        Website contact form messages are delivered to your configured inbox. This screen lists
         inquiries stored in the database, ready for future features such as lead tracking.
       </p>
       {inquiries.length === 0 ? (

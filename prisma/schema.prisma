@@ -225,7 +225,7 @@ model PGImage {
 }
 
 // ---------------------------------------------------------------------------
-// INQUIRIES (contact form is delivered via Formspree; this table lets the
+// INQUIRIES (contact form is delivered via Resend; this table lets the
 // architecture optionally persist inquiries too — Phase 21/28)
 // ---------------------------------------------------------------------------
 

@@ -26,7 +26,7 @@ export function DashboardStats({ stats }: { stats: Stats }) {
         <Inbox className="h-4 w-4 text-gold-600" aria-hidden />
         <p className="text-sm text-muted">
           Database inquiries: <span className="font-semibold text-ink">{stats.newInquiries}</span> new
-          <span className="ml-1">(contact form messages are delivered to your email via Formspree)</span>
+          <span className="ml-1">(contact form messages are delivered to your configured inbox)</span>
         </p>
       </div>
     </dl>

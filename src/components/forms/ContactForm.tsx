@@ -22,7 +22,6 @@ interface ContactFormProps {
 type SubmitState = "idle" | "success" | "error";
 
 export function ContactForm({ defaultService = "GENERAL_INQUIRY", defaultSubject = "" }: ContactFormProps) {
-  const endpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
   const [status, setStatus] = useState<SubmitState>("idle");
 
   const {
@@ -43,17 +42,13 @@ export function ContactForm({ defaultService = "GENERAL_INQUIRY", defaultSubject
   });
 
   async function onSubmit(values: ContactFormValues) {
-    if (!endpoint) {
-      setStatus("error");
-      return;
-    }
     try {
-      const response = await fetch(endpoint, {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(values),
       });
-      if (!response.ok) throw new Error(`Formspree responded ${response.status}`);
+      if (!response.ok) throw new Error(`Contact API responded ${response.status}`);
       setStatus("success");
       reset();
     } catch (error) {
@@ -79,9 +74,7 @@ export function ContactForm({ defaultService = "GENERAL_INQUIRY", defaultSubject
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-5">
       {status === "error" && (
         <div role="alert" className="rounded-md border border-red-200 bg-red-50 p-4 text-sm text-red-700">
-          {endpoint
-            ? "We couldn't send your message. Please check your connection and try again."
-            : "The contact form is not configured yet (missing NEXT_PUBLIC_FORMSPREE_ENDPOINT)."}
+          We couldn&apos;t send your message. Please check your connection and try again.
         </div>
       )}
       <div className="grid gap-5 sm:grid-cols-2">
